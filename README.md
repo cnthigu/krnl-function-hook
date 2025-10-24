@@ -20,7 +20,7 @@ NtOpenCompositionSurfaceSectionInfo:
     jmp rax                       ; Pula para nossa função
 ```
 
-![Hook Process](./hook.png)
+![Hook Process](./hook2.png)
 
 ## Por que NtOpenCompositionSurfaceSectionInfo?
 
@@ -39,8 +39,6 @@ Esta função foi escolhida porque:
 ### Funções para evitar:
 - Funções com "SecureCookie" (causam BSOD)
 - Funções em regiões críticas do sistema
-
-## Como Funciona
 
 ### Após Fazer o Hook
 
@@ -69,6 +67,7 @@ Podemos procurar mais funções e encontrei esse site excelente: https://j00ru.v
 3. **User Mode** chama a função hookada para operações de memória
 4. **Kernel** processa a requisição e retorna resultado
 
+![Hook Process](./hook.png)
 
 ## Como Executar
 
