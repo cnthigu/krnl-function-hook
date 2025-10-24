@@ -20,7 +20,7 @@ NtOpenCompositionSurfaceSectionInfo:
     jmp rax                       ; Pula para nossa função
 ```
 
-![Hook Process](hook.png)
+![Hook Process](./hook.png)
 
 ## Por que NtOpenCompositionSurfaceSectionInfo?
 
@@ -43,7 +43,7 @@ Esta função foi escolhida porque:
 
 ## Como Funciona
 
-![Hook Visualization](hook.png)
+![Hook Visualization](./hook.png)
 
 1. **Driver** substitui os primeiros bytes da função por shellcode
 2. **Shellcode** redireciona execução para nossa função `hook_handle`
