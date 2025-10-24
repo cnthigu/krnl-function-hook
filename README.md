@@ -42,8 +42,6 @@ Esta função foi escolhida porque:
 
 ## Como Funciona
 
-![Hook Process](./hook2.png)
-
 ### Após Fazer o Hook
 
 Agora que entendemos como a função está antes do hook, vamos ver exatamente o que vamos colocar no lugar dos bytes originais:
@@ -81,16 +79,34 @@ Podemos procurar mais funções e encontrei esse site excelente: https://j00ru.v
 # Projeto configurado apenas para Release x64
 ```
 
-### 2. Executar
-```bash
-# 1. Abrir DebugView como administrador
-# 2. Carregar driver
-kdmapper.exe kernel_mode.sys
+### 2. Preparar o Ambiente
 
-# 3. Abrir notepad
+**⚠️ IMPORTANTE:** Drivers kernel precisam ser carregados de forma especial. Você tem duas opções:
+
+#### Opção A: Modo Teste do Windows (Recomendado para Iniciantes)
+```bash
+# 1. Habilitar modo teste
+bcdedit /set testsigning on
+# 2. Reiniciar o computador
+# 3. Usar sc.exe para carregar o driver
+sc create kernel_mode type= kernel binPath= C:\caminho\para\kernel_mode.sys
+sc start kernel_mode
+```
+
+#### Opção B: KDMapper (Para Drivers Não Assinados)
+```bash
+# 1. Baixar kdmapper: https://github.com/TheCruZ/kdmapper
+# 2. Abrir DebugView como administrador
+# 3. Carregar driver
+kdmapper.exe kernel_mode.sys
+```
+
+### 3. Executar a Demonstração
+```bash
+# 1. Abrir notepad
 notepad
 
-# 4. Executar demo
+# 2. Executar demo
 user_mode.exe
 ```
 
@@ -140,12 +156,7 @@ kernel_mode/
 └── kernel_mode.sln      # Solução Visual Studio
 ```
 
-
-*Demonstração simples de function hooking em kernel mode! *
-
 ##  Referências e Recursos Adicionais
-
-Para uma análise mais detalhada sobre como encontrar e analisar funções do Windows usando WinDbg, confira:
 
 **[Encontrando funções no Windows com WinDbg — Parte 1](https://cnthigu.github.io/encontrando-funcoes-windbg/)**
 
