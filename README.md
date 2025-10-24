@@ -35,7 +35,6 @@ Esta função foi escolhida porque:
 ### Outras funções que funcionam:
 - `NtOpen*` (maioria das funções NtOpen)
 - Funções com "Composition" no nome
-- Lista completa: https://j00ru.vexillium.org/syscalls/win32k/64/
 
 ### Funções para evitar:
 - Funções com "SecureCookie" (causam BSOD)
@@ -43,7 +42,29 @@ Esta função foi escolhida porque:
 
 ## Como Funciona
 
-![Hook Visualization](./hook.png)
+![Hook Process](./hook.png)
+
+### Após Fazer o Hook
+
+Agora que entendemos como a função está antes do hook, vamos ver exatamente o que vamos colocar no lugar dos bytes originais:
+
+```
+48 B8 [endereço de 64 bits] FF  E0
+│  │   └─────────┬─────────┘   │ │
+│  │             │             │ └─> JMP RAX
+└─ └─────────────┴─────────────┴───> MOV RAX, <endereço>
+```
+
+**Detalhamento:**
+- `48 B8`: Opcode para MOV RAX, imm64
+- `[8 bytes]`: Endereço da nossa função
+- `FF E0`: Opcode para JMP RAX
+
+Este shellcode de 12 bytes substituirá os primeiros bytes da função original, fazendo com que qualquer chamada para `NtOpenCompositionSurfaceSectionInfo` seja redirecionada para nossa função personalizada.
+
+### Outras Funções Disponíveis
+
+Podemos procurar mais funções e encontrei esse site excelente: https://j00ru.vexillium.org/syscalls/win32k/64/
 
 1. **Driver** substitui os primeiros bytes da função por shellcode
 2. **Shellcode** redireciona execução para nossa função `hook_handle`
@@ -121,3 +142,21 @@ kernel_mode/
 
 
 *Demonstração simples de function hooking em kernel mode! *
+
+##  Referências e Recursos Adicionais
+
+Para uma análise mais detalhada sobre como encontrar e analisar funções do Windows usando WinDbg, confira:
+
+**[Encontrando funções no Windows com WinDbg — Parte 1](https://cnthigu.github.io/encontrando-funcoes-windbg/)**
+
+*Nota: Este é meu blog pessoal com anotações de estudo. Se ajudar no seu aprendizado, fique à vontade para usar!*
+
+Este post complementa este projeto com:
+- Como usar WinDbg para análise de funções
+- Detalhes técnicos sobre `NtOpenCompositionSurfaceSectionInfo`
+- Análise assembly antes e depois do hook
+- Dicas importantes sobre funções para evitar
+- Conceitos de assembly x64 essenciais
+
+---
+
