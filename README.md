@@ -1,4 +1,4 @@
-# kernel-functio-hooking 
+# kernel-function-hooking
 
 Demonstração educacional de **Function Hooking** em kernel Windows.
 
@@ -49,9 +49,6 @@ Esta função foi escolhida porque:
 2. **Shellcode** redireciona execução para nossa função `hook_handle`
 3. **User Mode** chama a função hookada para operações de memória
 4. **Kernel** processa a requisição e retorna resultado
-
-## 📸 Onde Colocar a Print?
-
 
 
 ## Como Executar
