@@ -67,8 +67,6 @@ Podemos procurar mais funções e encontrei esse site excelente: https://j00ru.v
 3. **User Mode** chama a função hookada para operações de memória
 4. **Kernel** processa a requisição e retorna resultado
 
-![Hook Process](./hook.png)
-
 ## Como Executar
 
 ### 1. Compilar
@@ -111,35 +109,7 @@ user_mode.exe
 
 ## Saída Esperada
 
-### DebugView (Kernel Logs):
-```
-[KERNEL] Driver carregado com sucesso!
-[KERNEL] Iniciando instalacao do hook...
-[KERNEL] Hook instalado com sucesso!
-[KERNEL] Interceptando: NtOpenCompositionSurfaceSectionInfo
-[KERNEL] Solicitando endereco base: notepad.exe (PID: 1234)
-[KERNEL] Endereco base encontrado: 0x7ff6a0000000
-[KERNEL] Operacao de LEITURA em 0x7ff6a0001000 (tamanho: 4)
-[KERNEL] Operacao de ESCRITA em 0x7ff6a0001000 (tamanho: 4)
-```
-
-### Terminal (User Mode):
-```
-=== Kernel Mode Hook Demo ===
-Driver: kernel_mode.sys
-Hook: NtOpenCompositionSurfaceSectionInfo
-
-[OK] user32.dll carregado
-[OK] Notepad encontrado! PID: 1234
-[OK] Endereco base: 0x7ff6a0000000
-
-=== Demonstracao ===
-Lendo 0x7ff6a0001000 = 0
-Escrevendo 12345 em 0x7ff6a0001000
-
-=== Concluido! ===
-Hook funcionando corretamente!
-```
+![Hook Process](./hook.png)
 
 ## Estrutura do Projeto
 
