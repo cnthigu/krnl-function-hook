@@ -51,11 +51,6 @@ Agora que entendemos como a função está antes do hook, vamos ver exatamente o
 └─ └─────────────┴─────────────┴───> MOV RAX, <endereço>
 ```
 
-**Detalhamento:**
-- `48 B8`: Opcode para MOV RAX, imm64
-- `[8 bytes]`: Endereço da nossa função
-- `FF E0`: Opcode para JMP RAX
-
 Este shellcode de 12 bytes substituirá os primeiros bytes da função original, fazendo com que qualquer chamada para `NtOpenCompositionSurfaceSectionInfo` seja redirecionada para nossa função personalizada.
 
 ### Outras Funções Disponíveis
