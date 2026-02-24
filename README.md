@@ -23,4 +23,4 @@ For more detailed technical analysis and study notes on Windows kernel debugging
 
 **[Finding functions in Windows with WinDbg — Part 1](https://cnthigu.github.io/encontrando-funcoes-windbg/)**
 
-*Note: This is my personal study blog with technical notes. If it helps with your learning, feel free to use it!*
+*Note: This is my personal study blog with technical notes. If it helps with your learning, feel free to use!*
