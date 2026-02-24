@@ -10,7 +10,7 @@ The driver hooks `NtOpenCompositionSurfaceSectionInfo` from `dxgkrnl.sys` (Direc
 
 ## Demo
 
-![Hook Process](./hook.png)
+![Hook Process](./hook_v2.png)
 
 The demo shows the hook in action, with the user-mode application communicating with the kernel driver to demonstrate memory operations and function interception.
 
