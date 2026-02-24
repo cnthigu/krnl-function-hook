@@ -10,7 +10,7 @@
 #include <wdm.h>
 #pragma comment(lib, "ntoskrnl.lib")
 
-// Define apenas se ainda não estiver definido nos headers do sistema
+
 #ifndef _SYSTEM_INFOMATION_CLASS_DEFINED
 #define _SYSTEM_INFOMATION_CLASS_DEFINED
 typedef enum _SYSTEM_INFOMATION_CLASS 
@@ -166,7 +166,7 @@ typedef struct _LDR_DATA_TABLE_ENTRY {
 	PVOID DllBase;
 	PVOID Reserved3[2];
 	UNICODE_STRING FullDllName;
-	UNICODE_STRING BaseDllName;  // ADICIONADO: Nome base da DLL
+	UNICODE_STRING BaseDllName;  
 	BYTE Reserved4[8];
 	PVOID Reserved5[3];
 	union {
