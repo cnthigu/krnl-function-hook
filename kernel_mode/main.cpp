@@ -5,16 +5,17 @@ extern "C" NTSTATUS DriverEntry(PDRIVER_OBJECT DriverObject, PUNICODE_STRING reg
 	UNREFERENCED_PARAMETER(DriverObject);
 	UNREFERENCED_PARAMETER(reg_path);
 
-	DbgPrint("[KERNEL] Driver carregado com sucesso!");
-	DbgPrint("[KERNEL] Iniciando instalacao do hook...");
+	DbgPrint("[Hook] Driver Load.");
 
-	bool hook_success = nullhook::call_kernel_function(&nullhook::hook_handle);
+	bool hook_success = cnthook::call_kernel_function(&cnthook::hook_handle);
 	
-	if (hook_success) {
-		DbgPrint("[KERNEL] Hook instalado com sucesso!");
-		DbgPrint("[KERNEL] Interceptando: NtOpenCompositionSurfaceSectionInfo");
-	} else {
-		DbgPrint("[KERNEL] ERRO: Falha ao instalar hook!");
+	if (hook_success) 
+	{
+		DbgPrint("[Hook] Hook Sucess (NtOpenCompositionSurfaceSectionInfo)");
+	} 
+	else 
+	{
+		DbgPrint("[Hook] Hook Failed");
 	}
 
 	return STATUS_SUCCESS;

@@ -8,7 +8,7 @@ PVOID get_system_module_base(const char* module_name)
 
 	if (!bytes) 
 		return NULL;
-
+																									//or nullptr 
 	PRTL_PROCESS_MODULES modules = (PRTL_PROCESS_MODULES)ExAllocatePoolWithTag(NonPagedPool, bytes, 0x6e756c6c);
 
 	status = ZwQuerySystemInformation(SystemModuleInformation, modules, bytes, &bytes);	
@@ -100,15 +100,12 @@ ULONG64 get_module_base_x64(PEPROCESS proc, UNICODE_STRING module_name)
 		return NULL;
 	}
 
-	// Iterar pela lista de módulos carregados no processo
 	for (PLIST_ENTRY list = (PLIST_ENTRY)pLdr->InMemoryOrderModuleList.Flink; 
 		 list != &pLdr->InMemoryOrderModuleList; 
 		 list = (PLIST_ENTRY)list->Flink)
 	{
-		// Pegar a entrada da tabela LDR a partir do link
 		PLDR_DATA_TABLE_ENTRY pEntry = CONTAINING_RECORD(list, LDR_DATA_TABLE_ENTRY, InMemoryOrderLinks);
 
-		// Comparar o nome da DLL
 		if (RtlCompareUnicodeString(&pEntry->BaseDllName, &module_name, TRUE) == 0) 
 		{
 			ULONG64 base_address = (ULONG64)pEntry->DllBase;
