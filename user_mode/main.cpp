@@ -7,6 +7,7 @@ int main()
 	LoadLibraryA("user32.dll");
 
 	log(LogType::Info, "Searching process...");
+
 	process_id = get_process_id(L"notepad.exe");
 
 	if (!process_id)

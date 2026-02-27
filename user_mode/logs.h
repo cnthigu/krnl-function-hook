@@ -15,10 +15,18 @@ void log(LogType type, const string& msg)
 
 	switch (type)
 	{
-	case LogType::Info:    prefix = "[*] "; break;
-	case LogType::Success: prefix = "[+] "; break;
-	case LogType::Error:   prefix = "[-] "; break;
-	case LogType::Warning: prefix = "[!] "; break;
+	case LogType::Info:    
+		prefix = "[*] "; 
+		break;
+	case LogType::Success: 
+		prefix = "[+] "; 
+		break;
+	case LogType::Error:   
+		prefix = "[-] ";
+		break;
+	case LogType::Warning: 
+		prefix = "[!] "; 
+		break;
 	}
 
 	cout << prefix << msg << endl;

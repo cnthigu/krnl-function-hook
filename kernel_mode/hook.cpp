@@ -40,8 +40,7 @@ NTSTATUS cnthook::hook_handle(PVOID called_param)
 
 	if (instructions->req_base == TRUE)
 	{
-		DbgPrint("[Hook] Address base: %s (PID: %d)", 
-				 instructions->module_name, instructions->pid);
+		DbgPrint("[Hook] Address base: %s (PID: %d)", instructions->module_name, instructions->pid);
 		
 		ANSI_STRING AS;
 		UNICODE_STRING ModuleName;
@@ -55,7 +54,7 @@ NTSTATUS cnthook::hook_handle(PVOID called_param)
 			DbgPrint("[Hook] Error convert string: 0x%X\n", status);
 			return status;
 		}
-
+			
 
 		PEPROCESS process = NULL;
 

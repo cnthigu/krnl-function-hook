@@ -11,13 +11,16 @@ std::uint32_t get_process_id(const wchar_t* process_name)
 	if (snapshot == INVALID_HANDLE_VALUE) return 0;
 
 	processentry.dwSize = sizeof(PROCESSENTRY32);
-	if (!Process32First(snapshot, &processentry)) {
+	if (!Process32First(snapshot, &processentry)) 
+	{
 		CloseHandle(snapshot);
 		return 0;
 	}
 
-	while (Process32Next(snapshot, &processentry) == TRUE) {
-		if (wcscmp(process_name, processentry.szExeFile) == 0) {
+	while (Process32Next(snapshot, &processentry) == TRUE) 
+	{
+		if (wcscmp(process_name, processentry.szExeFile) == 0) 
+		{
 			CloseHandle(snapshot);
 			return processentry.th32ProcessID;
 		}
