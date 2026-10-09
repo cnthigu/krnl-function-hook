@@ -8,7 +8,7 @@ This project demonstrates kernel function hooking by intercepting calls to `NtOp
 
 The driver hooks `NtOpenCompositionSurfaceSectionInfo` from `dxgkrnl.sys` (DirectX Graphics Kernel) by changing the first 12 bytes of the function to point to its own handler. This allows interception of all calls to this function for monitoring or modification.
 
-The driver is in `src/kernel_mode/`; the client is in `src/user_mode/`.
+The driver is in `src/kernel_mode/`; the client is in `src/user_mode/`
 
 ## Demo
 
