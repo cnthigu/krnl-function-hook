@@ -8,9 +8,11 @@ This project demonstrates kernel function hooking by intercepting calls to `NtOp
 
 The driver hooks `NtOpenCompositionSurfaceSectionInfo` from `dxgkrnl.sys` (DirectX Graphics Kernel) by changing the first 12 bytes of the function to point to its own handler. This allows interception of all calls to this function for monitoring or modification.
 
+The driver is in `src/kernel_mode/`; the client is in `src/user_mode/`.
+
 ## Demo
 
-![Hook Process](./hook_v2.png)
+![Hook Process](hook_v2.png)
 
 The demo shows the hook in action, with the user-mode application communicating with the kernel driver to demonstrate memory operations and function interception.
 
@@ -18,8 +20,4 @@ MAKE SURE TO ENABLE TEST MODE TO TEST THIS PROJECT. IF YOU WISH TO USE IT OUTSID
 
 NOTE: THIS IS FOR EDUCATIONAL PURPOSES ONLY. I WON'T BE ADDING ANY ANTI-DETECTION OR PRODUCTION-READY CODE.
 
-For more detailed technical analysis and study notes on Windows kernel debugging and function hooking, check out my personal study blog:
-
-**[Finding functions in Windows with WinDbg — Part 1](https://cnthigu.github.io/encontrando-funcoes-windbg/)**
-
-*Note: This is my personal study blog with technical notes. If it helps with your learning, feel free to use!*
+This is part of my Windows internals studies. More notes on [my blog](https://cnthigu.github.io/), including [Finding functions in Windows with WinDbg — Part 1](https://cnthigu.github.io/encontrando-funcoes-windbg/).
