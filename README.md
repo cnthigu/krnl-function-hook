@@ -1,6 +1,6 @@
 # Windows Kernel Function Hooking
 
-Hook system calls on Windows by intercepting kernel functions
+Hook system calls on Windows by intercepting kernel functions.
 
 ## How does it work?
 
@@ -17,7 +17,6 @@ The demo shows the hook in action, with the user-mode application communicating 
 MAKE SURE TO ENABLE TEST MODE TO TEST THIS PROJECT. IF YOU WISH TO USE IT OUTSIDE TEST MODE, USE YOUR CUSTOM DRIVER LOADER OR SIGN THE DRIVER.
 
 NOTE: THIS IS FOR EDUCATIONAL PURPOSES ONLY. I WON'T BE ADDING ANY ANTI-DETECTION OR PRODUCTION-READY CODE.
-
 
 For more detailed technical analysis and study notes on Windows kernel debugging and function hooking, check out my personal study blog:
 
